@@ -1,4 +1,5 @@
 const upload = require("../middleware/imgUpload");
+const Tesseract = require("tesseract.js");
 
 const uploadFile = async (req, res) => {
   try {
@@ -7,6 +8,11 @@ const uploadFile = async (req, res) => {
     if (req.file == undefined) {
       return res.status(400).send({ message: "Select image to upload" });
     }
+
+    const dynamicpath =
+      "/Users/tanmay/Desktop/HACKUTA/hackUTA2022/server 2.0/public/uploads/" +
+      req.file.originalname;
+    getText(dynamicpath);
 
     res.status(200).send({
       message: "Image successfully uploaded: " + req.file.originalname,
@@ -25,5 +31,13 @@ const uploadFile = async (req, res) => {
     });
   }
 };
+
+function getText(passedImg) {
+  Tesseract.recognize(passedImg, "eng", { logger: (m) => console.log(m) }).then(
+    ({ data: { text } }) => {
+      console.log(text);
+    }
+  );
+}
 
 module.exports = { uploadFile };

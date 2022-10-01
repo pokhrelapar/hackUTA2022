@@ -20,7 +20,7 @@ app.use(
 
 _appRoutes(app);
 
-const port = process.env.PORT || 4000;
+const port = 3001;
 app.listen(port, () => {
   console.log("App working on: " + port);
 });
