@@ -12,10 +12,11 @@ const uploadFile = async (req, res) => {
     const dynamicpath =
       "/Users/tanmay/Desktop/HACKUTA/hackUTA2022/server 2.0/public/uploads/" +
       req.file.originalname;
-    getText(dynamicpath);
 
-    res.status(200).send({
-      message: "Image successfully uploaded: " + req.file.originalname,
+    Tesseract.recognize(dynamicpath, "eng", {}).then(({ data: { text } }) => {
+      res.status(200).send({
+        message: text,
+      });
     });
   } catch (err) {
     console.log(err);
@@ -32,12 +33,19 @@ const uploadFile = async (req, res) => {
   }
 };
 
-function getText(passedImg) {
-  Tesseract.recognize(passedImg, "eng", { logger: (m) => console.log(m) }).then(
-    ({ data: { text } }) => {
-      console.log(text);
-    }
-  );
+const getData = async () => {
+  Tesseract.recognize(passedImg, "eng", {}).then(({ data: { text } }) => {
+    return text;
+  });
+};
+
+async function getText(passedImg) {
+  Tesseract.recognize(passedImg, "eng", {}).then(({ data: { text } }) => {
+    return text;
+  });
+}
+function sleep(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
 }
 
 module.exports = { uploadFile };
