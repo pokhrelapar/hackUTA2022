@@ -5,7 +5,7 @@ const app = express();
 global.__basedir = __dirname;
 
 var _cors = {
-  origin: "http://localhost:4000",
+  origin: "http://localhost:3000",
 };
 
 app.use(cors(_cors));

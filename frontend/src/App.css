@@ -1,0 +1,152 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-color: red;
+}
+
+.form{
+  text-align: center;
+  object-position: center;
+  width: 100vw;
+  height: 80vh;
+  top: 10vh;
+  position: fixed;
+}
+
+.webcam{
+  object-position: center;
+  top: 0vh;
+  left: 0px;
+  margin-top: 0px;
+  /* margin-left: -100px; */
+  position: static;
+  /* position:sticky; */
+}
+
+.captureButton{
+  /* margin-top: 1vh; */
+  height: 10vh;
+  width: 40vw;
+  margin-right: 1vw;
+  /* float: left; */
+  /* height: 10px; */
+  display: inline;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: blue;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px white;
+}
+
+.captureButton:hover {background-color: blue}
+
+.captureButton:active {
+  background-color: blue;
+  box-shadow: 0 5px white;
+  transform: translateY(4px);
+}
+
+.submitButton{
+  margin-top: 1vh;
+  height: 10vh;
+  width: 40vw;
+  margin-left: 1vw;
+  /* float: right;
+  height: 5vh; */
+  display: inline;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px white;
+}
+
+.submitButton:hover {background-color: #3e8e41}
+
+.submitButton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px white;
+  transform: translateY(4px);
+}
+
+.bottombar{
+  width: 100vw;
+  height: 10vh;
+  background-color: white;
+  color: red;
+  text-align: center;
+  object-position: center;
+  font-size: 8vmin;
+  bottom: 0vh;
+  position: fixed;
+}
+
+.bar{
+  width: 100vw;
+  height: 10vh;
+  background-color: white;
+  color: red;
+  font-size: 8vmin;
+  text-align: center;
+  object-position: center;
+  /* font-display:inherit; */
+  /* float: center; */
+  top: 0vh;
+  position: fixed;
+}
+
+.mainPage{
+  top: 10vh;
+  width: 100vw;
+  height: 80vh;
+  background-color: red;
+  color: white;
+  position: fixed;
+  object-position: center;
+}
+
+
+.center {
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5vh;
+}
+
+.mainPage th, td{
+  color: white;
+  font-family: Jost;
+  border: 1px solid black;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  text-align: center;
+  font-size: 3vh;
+  background-color:  red;
+  max-width: 200px;
+}
+
+.anotherButton{
+  height: 8vh;
+  width: 100vw;
+  margin-top: 2vh;
+}
+
+.theTable{
+  width: 100vw;
+  color: white;
+  background-color: red;
+}
