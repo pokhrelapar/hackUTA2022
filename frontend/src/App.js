@@ -25,6 +25,9 @@ let config = {
 const App = () => {
   const [selectedImage, setSelectedImage] = React.useState(null);
 // //
+  const [displayButton, setDisplayButton] = React.useState(<><button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
+  <button class="btn btn-primary anotherButton" onClick = {() => insureItems()} > Insure Items?</button></>)
+
   const [table, setTable] = React.useState(
   <table className='theTable'>
   <tr >
@@ -84,10 +87,76 @@ const App = () => {
   }
 
   function goToStart(){
+        setTable(
+        <table className='theTable'>
+    <tr >
+        <th>Items</th>
+        <th>Cost</th>
+        <th>Do We Ensure?</th>
+    </tr>
+    <tr>
+        <td>IPhone</td>
+        <td>$1000</td>
+        <td>Yes (Renters, Business)</td>
+    </tr> 
+    <tr>
+        <td>Dog</td>
+        <td>$120</td>
+        <td>Yes (Pet Insurance)</td>
+    </tr>
+    <tr>
+        <td>Chicken Sandwich</td>
+        <td>$5</td>
+        <td>No (sadly)</td>
+    </tr>
+  </table>
+    )
+    setDisplayButton(
+      <>
+      <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
+      <button class="btn btn-primary anotherButton" onClick = {() => insureItems()} > Insure?</button>
+      </>
+    )
     setSelectedImage(null)
   }
 
+  function confirmInsure(){
+    setDisplayButton(<>
+      <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
+      </>)
+    setTable(
+      <table className='theTable'>
+  <tr >
+      <th>Items</th>
+      <th>Cost</th>
+      <th>Do We Ensure?</th>
+  </tr>
+  <tr>
+      <td>IPhone</td>
+      <td>$1000</td>
+      <td>Yes (Renters, Business)</td>
+  </tr> 
+  <tr>
+      <td>Dog</td>
+      <td>$120</td>
+      <td>Yes (Pet Insurance)</td>
+  </tr>
+  <tr>
+      <td>Chicken Sandwich</td>
+      <td>$5</td>
+      <td>No (sadly)</td>
+  </tr>
+</table>
+    )
+    alert("Insurance request has been sent")
+  }
+
   function insureItems(){
+
+    setDisplayButton(<>
+    <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
+    <button class="btn btn-primary anotherButton" onClick = {() => confirmInsure()} > Insure</button>
+    </>)
     setTable(<table className='theTable'>
     <tr >
         <th>Items</th>
@@ -95,11 +164,15 @@ const App = () => {
     </tr>
     <tr>
         <td>IPhone</td>
-        <td>checkBox</td>
+        <td>
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+        </td>
     </tr> 
     <tr>
         <td>Dog</td>
-        <td>checkBox</td>
+        <td>
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+        </td>
     </tr>
 </table>)
   }
@@ -139,8 +212,7 @@ const App = () => {
         {selectedImage}
         <div className='mainPage center'>
           {table}
-        <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
-        <button class="btn btn-primary anotherButton" onClick = {() => insureItems()} > Insure Items?</button>
+          {displayButton}
         </div>
         <div className='bottombar'>
 
