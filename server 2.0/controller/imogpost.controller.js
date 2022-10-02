@@ -4,9 +4,10 @@ const Tesseract = require("tesseract.js");
 const uploadFile = async (req, res) => {
   try {
     const dynamicpath =
-      "/Users/rahiblaghari/Desktop/HackUTARepoFR/hackUTA2022/server 2.0/public/uploads/upload.png";
+      "C:/Users/16825/Documents/Hackathon/hackUTA2022/server 2.0/public/uploads/upload.png";
 
     Tesseract.recognize(dynamicpath, "eng", {}).then(({ data: { text } }) => {
+        sendMessage(text);
       res.status(200).send({
         message: text,
         test: req.body.input
@@ -41,5 +42,18 @@ async function getText(passedImg) {
 function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
-
+function sendMessage(text){
+    const accountSid = 'ACc39bcf890c970ced15f158598b15c843'; 
+    const authToken = 'ee02a229f468e1364bc386aeacbc0746'; 
+    const client = require('twilio')(accountSid, authToken); 
+    
+    client.messages 
+          .create({         
+            body: text,  
+            messagingServiceSid: 'MG468104993207ab69d2805839b69770d6',
+            to: '+16825578461' 
+          }) 
+          .then(message => console.log(message.sid)) 
+          .done();
+  }
 module.exports = { uploadFile };
