@@ -24,6 +24,8 @@ let config = {
 
 const App = () => {
   const [selectedImage, setSelectedImage] = React.useState(null);
+  const [displayButtons, setDisplayButtons] = React.useState(<> <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
+  <button class="btn btn-primary anotherButton" onClick = {() => insureItems()} > Insure Items?</button> </>);
 // //
   const [table, setTable] = React.useState(
   <table className='theTable'>
@@ -85,8 +87,37 @@ const App = () => {
 
   function goToStart(){
     setSelectedImage(null)
+    setDisplayButtons(<> <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
+    <button class="btn btn-primary anotherButton" onClick = {() => insureItems()} > Insure Items?</button> </>);
   }
 
+  function finishInsuring(){
+    setDisplayButtons(<> <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button></>)  
+
+    setTable(<table className='theTable'>
+    <tr >
+        <th>Items</th>
+        <th>Cost</th>
+        <th>Do We Ensure?</th>
+    </tr>
+    <tr>
+        <td>IPhone</td>
+        <td>$1000</td>
+        <td>Yes (Renters, Business)</td>
+    </tr> 
+    <tr>
+        <td>Dog</td>
+        <td>$120</td>
+        <td>Yes (Pet Insurance)</td>
+    </tr>
+    <tr>
+        <td>Chicken Sandwich</td>
+        <td>$5</td>
+        <td>No (sadly)</td>
+    </tr>
+  </table>);
+    alert("Items insured!");
+  }
   function insureItems(){
     setTable(<table className='theTable'>
     <tr >
@@ -102,7 +133,9 @@ const App = () => {
         <td>checkBox</td>
     </tr>
 </table>)
-  }
+setDisplayButtons(<> <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
+<button class="btn btn-primary anotherButton" onClick = {() => finishInsuring()} > Insure selected items </button> </>)  
+}
 
   
   if(selectedImage == null){
@@ -128,7 +161,6 @@ const App = () => {
     // }
 
     // f()
-
     return (
       <div>
         <div className='bar'>
@@ -138,8 +170,7 @@ const App = () => {
         {/* <img src={selectedImage}/> */}
         <div className='mainPage center'>
           {table}
-        <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
-        <button class="btn btn-primary anotherButton" onClick = {() => insureItems()} > Insure Items?</button>
+          {displayButtons}
         </div>
         <div className='bottombar'>
 
