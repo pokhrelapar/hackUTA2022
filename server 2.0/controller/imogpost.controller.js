@@ -3,19 +3,13 @@ const Tesseract = require("tesseract.js");
 
 const uploadFile = async (req, res) => {
   try {
-    await upload(req, res);
-
-    if (req.file == undefined) {
-      return res.status(400).send({ message: "Select image to upload" });
-    }
-
     const dynamicpath =
-      "C:/Users/16825/Documents/Hackathon/hackUTA2022/server 2.0/public/uploads/" +
-      req.file.originalname;
+      "C:/Users/16825/Documents/Hackathon/hackUTA2022/server 2.0/public/uploads/upload.png";
 
     Tesseract.recognize(dynamicpath, "eng", {}).then(({ data: { text } }) => {
       res.status(200).send({
         message: text,
+        test: req.body.input
       });
     });
   } catch (err) {

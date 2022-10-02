@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Webcam from "react-webcam";
+import axios from 'axios';
 
 
 const WebcamComponent = () => <Webcam />;
@@ -25,6 +26,20 @@ export const WebcamCapture = (input) => {
     
     const submitForm = () => {
         // input.setSelectedImage(document.getElementById("login-button"))
+        var articleId = '';
+        const bodytest = { input: 'React POST Request Example' };
+        // axios.post('http://localhost:3001/imgpost-upload', bodytest)
+        // .then(response => this.setState({ articleId: response}));
+        axios
+      .post('http://localhost:3001/imgpost-upload', {
+        input: "This is a new post."
+      })
+      .then((response) => {
+        console.log(response.data);
+        alert(response.data.message);
+      });
+
+
         input.setSelectedImage(image)
         alert("Form submitted");
     }

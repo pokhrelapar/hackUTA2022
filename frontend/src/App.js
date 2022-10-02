@@ -136,8 +136,9 @@ const App = () => {
           State Farm
         </div>
         {/* <img src={selectedImage}/> */}
+        {selectedImage}
         <div className='mainPage center'>
-          {table}
+          {/* {table} */}
         <button class="btn btn-primary anotherButton" onClick = {() => goToStart()} > Scan Another Reciept?</button>
         <button class="btn btn-primary anotherButton" onClick = {() => insureItems()} > Insure Items?</button>
         </div>
