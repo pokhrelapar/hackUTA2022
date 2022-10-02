@@ -10,7 +10,7 @@ const uploadFile = async (req, res) => {
     }
 
     const dynamicpath =
-      "C:/Users/16825/Documents/Hackathon/hackUTA2022/server 2.0/public/uploads/" +
+      "/Users/rahiblaghari/Desktop/HackUTARepoFR/hackUTA2022/server 2.0/public/" +
       req.file.originalname;
 
     Tesseract.recognize(dynamicpath, "eng", {}).then(({ data: { text } }) => {

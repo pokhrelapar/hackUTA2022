@@ -4,7 +4,7 @@ const Tesseract = require("tesseract.js");
 const uploadFile = async (req, res) => {
   try {
     const dynamicpath =
-      "C:/Users/16825/Documents/Hackathon/hackUTA2022/server 2.0/public/uploads/upload.png";
+      "/Users/rahiblaghari/Desktop/HackUTARepoFR/hackUTA2022/server 2.0/public/uploads/upload.png";
 
     Tesseract.recognize(dynamicpath, "eng", {}).then(({ data: { text } }) => {
       res.status(200).send({
