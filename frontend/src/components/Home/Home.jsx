@@ -2,19 +2,19 @@ import React, { useState } from 'react'
 import { WebcamCapture} from '../Webcam/Webcam'
 
 
-const Home = () => {
-
-
-
-    const submitForm = () => {
-        alert("Form submitted");
-    }
-
+const Home = (input) => {
+//setSelectedImage = {setSelectedImage} selectedImage = {selectedImage}
+    // const submitForm = () => {
+    //     input.setSelectedImage(document.getElementById("login-button"))
+    //     alert("Form submitted");
+    // }
 
     return (
         <form className="form">
-            <WebcamCapture/>
-            <button type="submit" id="login-button" class="btn btn-success" onClick={(e) => submitForm(e)}>Submit</button>
+            <WebcamCapture setSelectedImage = {input.setSelectedImage} selectedImage = {input.selectedImage}/>
+            {/* <span classname="submitButton">
+                <button type="submit" class="btn btn-success" onClick={(e) => submitForm(e)}>Submit</button>
+            </span> */}
         </form>
     )
 }

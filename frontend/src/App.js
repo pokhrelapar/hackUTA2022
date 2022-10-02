@@ -4,28 +4,66 @@ import React from 'react';
 import Home from './components/Home/Home'
 import './App.css';
 
+import sammple from'./images/sample.png';
+
+
 let api = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "http://localhost:3001/img-upload",
 })
 
 let config = {
   headers: {
-     'Content-Type': 'application/json',
+     'Content-Type': 'multipart/form-data',
   } 
 }
 
 const App = () => {
   const [selectedImage, setSelectedImage] = React.useState(null);
 
-  return (
-    <div>
-      <div className='bar'>
-        <img src={logo} width="130" height="80"/>
-        State Farm
+  var bodyFormData = new FormData();
+
+  async function getInfo(){
+    /// we want to send selected image, but we want to send it as a file
+    let uinfo= await api.post('/', {"file":sammple}, config)
+    .then(response=> (response.data))
+    console.log(uinfo)
+    return uinfo
+  }
+
+  if(selectedImage == null){
+    return (
+      <div>
+        <div className='bar'>
+          <img src={logo} class="rounded float-left"/>
+          State Farm
+        </div>
+        <Home setSelectedImage = {setSelectedImage} selectedImage = {selectedImage}/>
+        <div className='bottombar'>
+          <img src={logo} class="rounded float-left"/>
+          Statefarm
+        </div>
       </div>
-      <Home/>
-    </div>
-  );
+    );
+  }
+  else{
+    // Image is received here, create the website
+    return (
+      <div>
+        <div className='bar'>
+          <img src={logo} class="rounded float-left"/>
+          State Farm
+        </div>
+        <img src={selectedImage}/>
+        {/* {console.log("Hello")} */}
+        {getInfo()}
+        {bodyFormData.append('image', selectedImage)}
+        <div className='bottombar'>
+          <img src={logo} class="rounded float-left"/>
+          Statefarm
+        </div>
+      </div>
+    );
+  }
 };
 
 // export default UploadAndDisplayImage;
